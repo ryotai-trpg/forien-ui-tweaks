@@ -26,11 +26,11 @@ jobs:
       - name: Build Project
         run: npm run build
 
-      - name: Get System ID
-        id: systemID
+      - name: Get Module ID
+        id: moduleID
         uses: notiz-dev/github-action-json-property@release
         with:
-          path: './dist/system.json'
+          path: './dist/module.json'
           prop_path: 'id'
 
       - name: Extract Version From Tag
@@ -41,12 +41,12 @@ jobs:
         id: sub_manifest_link_version
         uses: microsoft/variable-substitution@v1
         with:
-          files: './dist/system.json'
+          files: './dist/module.json'
         env:
           version: ${{steps.get_version.outputs.version-without-v}}
           url: https://github.com/${{github.repository}}
-          manifest: https://github.com/${{github.repository}}/releases/latest/download/system.json
-          download: https://github.com/${{github.repository}}/releases/download/${{steps.get_version.outputs.version}}/system.zip
+          manifest: https://github.com/${{github.repository}}/releases/latest/download/module.json
+          download: https://github.com/${{github.repository}}/releases/download/${{steps.get_version.outputs.version}}/module.zip
           readme: https://github.com/${{github.repository}}/blob/${{steps.get_version.outputs.version}}/README.md
           changelog: https://github.com/${{github.repository}}/blob/${{steps.get_version.outputs.version}}/CHANGELOG.md
           bugs: https://github.com/${{github.repository}}/issues
@@ -54,20 +54,20 @@ jobs:
       - name: Create ZIP
         run: |
           cd dist
-          zip -r ../${{steps.systemID.outputs.prop}}.zip *
+          zip -r ../${{steps.moduleID.outputs.prop}}.zip *
 
       - name: Get mininum
         id: minimum
         uses: notiz-dev/github-action-json-property@release
         with:
-          path: './dist/system.json'
+          path: './dist/module.json'
           prop_path: 'compatibility.minimum'
 
       - name: Get verified
         id: verified
         uses: notiz-dev/github-action-json-property@release
         with:
-          path: './dist/system.json'
+          path: './dist/module.json'
           prop_path: 'compatibility.verified'
 
 #      - name: Foundry Release API
@@ -84,6 +84,6 @@ jobs:
         with:
           tag: ${{ github.ref }}
           name: Release ${{steps.get_version.outputs.version}}
-          artifacts: "./dist/system.json, ${{steps.systemID.outputs.prop}}.zip"
-          draft: true
+          artifacts: "./dist/module.json, ${{steps.moduleID.outputs.prop}}.zip"
+          draft: false
           generateReleaseNotes: true

@@ -1,0 +1,52 @@
+{
+  "id": "forien-ui-tweaks",
+  "title": "Forien's UI Tweaks",
+  "description": "Collection of UI and HUD tweaks to make interface more customizable in Foundry v13",
+  "authors": [
+    {
+      "name": "Forien",
+      "discord": "forien",
+      "url": "https://www.patreon.com/foundryworkshop"
+    }
+  ],
+  "url": "<<autoreplaced>>",
+  "manifest": "<<autoreplaced>>",
+  "download": "<<autoreplaced>>",
+  "readme": "<<autoreplaced>>",
+  "changelog": "<<autoreplaced>>",
+  "bugs": "<<autoreplaced>>",
+  "version": "<<autoreplaced>>",
+  "compatibility": {
+    "minimum": "13",
+    "verified": "13.340"
+  },
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "languages/en.json"
+    }
+  ],
+  "esmodules": [
+    "forien-ui-tweaks.mjs"
+  ],
+  "styles": [
+    "styles/forien-ui-tweaks.css"
+  ],
+  "flags": {
+    "hotReload": {
+      "extensions": [
+        "css",
+        "html",
+        "hbs",
+        "json"
+      ],
+      "paths": [
+        "templates/",
+        "styles/",
+        "languages/"
+      ]
+    }
+  },
+  "socket": false
+}

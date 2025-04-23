@@ -1,0 +1,20 @@
+{
+  "Forien": {
+    "UITweaks": {
+      "SETTINGS": {
+        "AutoExpandSidebar.Name": "Auto Expand Sidebar",
+        "AutoExpandSidebar.Hint": "When checked, Sidebar will start in expanded state upon login",
+        "DefaultTab.Name": "Default Sidebar Tab",
+        "DefaultTab.Hint": "Select which Sidebar Tab should be opened with Auto Expand Sidebar setting",
+        "CollapsibleHotbar.Name": "Collapsible Hotbar",
+        "CollapsibleHotbar.Hint": "When checked, replaces \"Main Menu\" button with \"Toggle Hotbar\" button that allows Hotbar to be collapsed",
+        "HotbarDefaultCollapsed.Name": "Hotbar starts collapsed",
+        "HotbarDefaultCollapsed.Hint": "When checked, Hotbar will begin in collapsed state upon login. Requires Collapsible Hotbar setting to be enabled.",
+        "HidePerformance.Name": "Hide Performance Stats",
+        "HidePerformance.Hint": "When checked, Performance Stats in the Players HUD will be hidden",
+        "LowerPauseBanner.Name": "Lower Pause Banner",
+        "LowerPauseBanner.Hint": "When checked, Pause Banner will be moved to lower 3rd of the screen, instead being in the middle. Not guaranteed to work well with custom pause from game systems"
+      }
+    }
+  }
+}

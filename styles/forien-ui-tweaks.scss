@@ -1,0 +1,9 @@
+#action-bar, #hotbar-controls-right {
+  transition: 150ms ease-in-out;
+
+  &.collapsed {
+    width: 0;
+    visibility: hidden;
+    overflow: hidden;
+  }
+}
