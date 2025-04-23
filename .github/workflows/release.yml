@@ -1,0 +1,89 @@
+name: Release
+
+on:
+  push:
+    branches: ["master"]
+    tags:
+      - "v*"
+
+jobs:
+  release:
+    permissions: write-all
+    name: "Release Version"
+    if: startsWith(github.ref, 'refs/tags/')
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup NodeJS 22
+        uses: actions/setup-node@v3
+        with:
+          node-version: "22"
+
+      - name: Install node modules
+        run: npm install
+
+      - name: Build Project
+        run: npm run build
+
+      - name: Get System ID
+        id: systemID
+        uses: notiz-dev/github-action-json-property@release
+        with:
+          path: './dist/system.json'
+          prop_path: 'id'
+
+      - name: Extract Version From Tag
+        id: get_version
+        uses: battila7/get-version-action@v2
+
+      - name: Modify Module Manifest With Release-Specific Values
+        id: sub_manifest_link_version
+        uses: microsoft/variable-substitution@v1
+        with:
+          files: './dist/system.json'
+        env:
+          version: ${{steps.get_version.outputs.version-without-v}}
+          url: https://github.com/${{github.repository}}
+          manifest: https://github.com/${{github.repository}}/releases/latest/download/system.json
+          download: https://github.com/${{github.repository}}/releases/download/${{steps.get_version.outputs.version}}/system.zip
+          readme: https://github.com/${{github.repository}}/blob/${{steps.get_version.outputs.version}}/README.md
+          changelog: https://github.com/${{github.repository}}/blob/${{steps.get_version.outputs.version}}/CHANGELOG.md
+          bugs: https://github.com/${{github.repository}}/issues
+
+      - name: Create ZIP
+        run: |
+          cd dist
+          zip -r ../${{steps.systemID.outputs.prop}}.zip *
+
+      - name: Get mininum
+        id: minimum
+        uses: notiz-dev/github-action-json-property@release
+        with:
+          path: './dist/system.json'
+          prop_path: 'compatibility.minimum'
+
+      - name: Get verified
+        id: verified
+        uses: notiz-dev/github-action-json-property@release
+        with:
+          path: './dist/system.json'
+          prop_path: 'compatibility.verified'
+
+#      - name: Foundry Release API
+#        uses: fjogeleit/http-request-action@v1
+#        with:
+#          url: 'https://api.foundryvtt.com/_api/packages/release_version'
+#          method: 'POST'
+#          preventFailureOnNoResponse: true
+#          customHeaders: '{"Content-Type": "application/json", "Authorization" : "${{ secrets.FOUNDRY_KEY }}"}'
+#          data: '{"dry_run": false, "id" : "${{steps.systemID.outputs.prop}}", "release": {"version" :  "${{steps.tag.outputs.tag}}", "manifest": "https://raw.githubusercontent.com/${{github.repository}}/${{steps.tag.outputs.tag}}/module.json", "notes" : "https://github.com/${{github.repository}}/releases/tag/${{steps.tag.outputs.tag}}", "compatibility" : {"minimum": "${{steps.minimum.outputs.prop}}", "verified": "${{steps.verified.outputs.prop}}", "maximum": "${{steps.maximum.outputs.prop}}"} } }'
+
+      - name: Create Release
+        uses: ncipollo/release-action@v1.9.0
+        with:
+          tag: ${{ github.ref }}
+          name: Release ${{steps.get_version.outputs.version}}
+          artifacts: "./dist/system.json, ${{steps.systemID.outputs.prop}}.zip"
+          draft: true
+          generateReleaseNotes: true
