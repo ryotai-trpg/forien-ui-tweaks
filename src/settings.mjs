@@ -1,5 +1,4 @@
 import {CON} from "./const.mjs";
-import KeyboardManager from "../../../../FoundryVTT/v13/client/helpers/interaction/keyboard-manager.mjs";
 
 function tabChoices() {
   const tabs = {
