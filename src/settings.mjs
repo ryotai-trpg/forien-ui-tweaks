@@ -1,4 +1,5 @@
 import {CON} from "./const.mjs";
+import KeyboardManager from "../../../../FoundryVTT/v13/client/helpers/interaction/keyboard-manager.mjs";
 
 function tabChoices() {
   const tabs = {
@@ -20,6 +21,24 @@ function tabChoices() {
 
   delete tabs.scenes;
   return tabs;
+}
+
+const {SHIFT, CONTROL} = foundry.helpers.interaction.KeyboardManager.MODIFIER_KEYS;
+
+const KEYBINDINGS = {
+  hideUI: {
+    key: "hideUI",
+    label: "HideUI",
+    editable: [
+      {
+        modifiers: [SHIFT, CONTROL],
+        key: "KeyX",
+      }
+    ],
+    onDown: () => {
+      document.querySelector("#interface").classList.toggle("hidden");
+    }
+  }
 }
 
 const SETTINGS = {
@@ -96,6 +115,14 @@ export function registerSettings() {
       hint: `${CON.I18N_PREFIX}.SETTINGS.${setting.label}.Hint`,
     }));
   }
+
+  for (const [_key, keybind] of Object.entries(KEYBINDINGS)) {
+    game.keybindings.register(setting.namespace ?? CON.ID, keybind.key, foundry.utils.mergeObject(keybind, {
+      name: `${CON.I18N_PREFIX}.KEYBINDINGS.${keybind.label}.Name`,
+      hint: `${CON.I18N_PREFIX}.KEYBINDINGS.${keybind.label}.Hint`,
+    }));
+  }
+  game.keybindings.register(CON.ID, "test", {name: "hint will be duplicated", hint:"test"})
 }
 
 export function setting(setting) {

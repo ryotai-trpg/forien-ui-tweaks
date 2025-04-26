@@ -18,6 +18,7 @@ All features are disabled by default and can be enabled in the `Configure Settin
 - **Hotbar Starts Collapsed**: makes it so Hotbar starts in collapsed state when you log in.
 - **Hide Performance Stats**: hides Performance Stats from Players HUD in the bottom left.
 - **Lower Pause Banner**: moves the Pause Banner from center to the lower 3rd of the screen.
+- `SHIFT+CTRL+X` keybinding (editable in settings) to toggle the visibility of Interface (does not affect opened Applications like Sheets)
 
 ## Future plans
 

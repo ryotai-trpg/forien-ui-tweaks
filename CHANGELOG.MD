@@ -1,4 +1,7 @@
 
+### v0.2.0
+- Added keybinding setting (`CTRL+SHIFT+X` by default) to toggle visibility of the entire Interface.
+
 ### v0.1.0
 - Initial release
 - **Auto Expand Sidebar**: login with already expanded sidebar!
