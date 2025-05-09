@@ -77,7 +77,6 @@ jobs:
           path: './dist/module.json'
           prop_path: 'compatibility.maximum'
 
-
       - name: Foundry Release API
         uses: fjogeleit/http-request-action@v1
         with:
