@@ -11,7 +11,11 @@
 Forien's UI Tweaks is a collection of HUD and UI tweaks for Foundry v13.
 
 ## Features
-All features are disabled by default and can be enabled in the `Configure Settings`. All Settings are client-side.
+### Global Features
+- **`maxZoom`/`minZoom` override**: Allows GM to globally override the Foundry's default `maxZoom` and `minZoom` on Canvas for all users.  
+
+### Client Side Features
+The following features are disabled by default and can be enabled in the `Configure Settings`.
 - **Auto Expand Sidebar**: login with already expanded sidebar!
 - **Default Sidebar Tab**: choose which tab should be opened when you log in. You can go straight to playlists!
 - **Collapsible Hotbar**: allows you to collapse and expand hotbar at will

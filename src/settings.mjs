@@ -105,6 +105,28 @@ const SETTINGS = {
         delete pauseBanner.style.top;
     }
   },
+  maxZoom: {
+    key: "maxZoom",
+    label: "MaxZoom",
+    scope: "world",
+    config: true,
+    default: 5,
+    type: Number,
+    onChange: (value) => {
+      if (value > 0) CONFIG.Canvas.maxZoom = value;
+    }
+  },
+  minZoom: {
+    key: "minZoom",
+    label: "MinZoom",
+    scope: "world",
+    config: true,
+    default: undefined,
+    type: Number,
+    onChange: (value) => {
+      if (value > 0) CONFIG.Canvas.minZoom = value;
+    }
+  },
 };
 
 export function registerSettings() {

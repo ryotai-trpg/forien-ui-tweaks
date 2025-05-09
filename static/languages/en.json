@@ -16,7 +16,11 @@
       "HidePerformance.Name": "Hide Performance Stats",
       "HidePerformance.Hint": "When checked, Performance Stats in the Players HUD will be hidden",
       "LowerPauseBanner.Name": "Lower Pause Banner",
-      "LowerPauseBanner.Hint": "When checked, Pause Banner will be moved to lower 3rd of the screen, instead being in the middle. Not guaranteed to work well with custom pause from game systems"
+      "LowerPauseBanner.Hint": "When checked, Pause Banner will be moved to lower 3rd of the screen, instead being in the middle. Not guaranteed to work well with custom pause from game systems",
+      "MaxZoom.Name": "Canvas — Max Zoom",
+      "MaxZoom.Hint": "[World Setting] Maximum Zoom (zoom in) for the Canvas. Foundry's default is 5. Takes effect when changing current Scene.",
+      "MinZoom.Name": "Canvas — Min Zoom",
+      "MinZoom.Hint": "[World Setting] Minimum Zoom (maximum zoom out) for the Canvas. When empty, Foundry defaults to (1 / maxZoom). Takes effect when changing current Scene."
     }
   }
 }

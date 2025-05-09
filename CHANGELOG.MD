@@ -1,4 +1,7 @@
 
+### v0.3.0
+- Added GM only setting that allows overriding Foundry's default `maxZoom` and `minZoom` values for Canvas.
+
 ### v0.2.0
 - Added keybinding setting (`CTRL+SHIFT+X` by default) to toggle visibility of the entire Interface.
 
