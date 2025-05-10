@@ -1,7 +1,7 @@
 import {setting} from "../settings.mjs";
 
 export default function render() {
-  Hooks.once("renderSidebar", (sidebar, _html, _context, _options) => {
+  Hooks.on("renderSidebar", (sidebar, _html, _context, _options) => {
     if (setting("autoExpandSidebar")) {
       const tab = setting("defaultTab");
       sidebar.expand();
@@ -9,9 +9,12 @@ export default function render() {
     }
   });
 
-  Hooks.once("renderHotbar", (hotbar, html, _context, _options) => {
+  Hooks.on("renderHotbar", (hotbar, html, context, options) => {
     if (!setting("collapsibleHotbar")) return;
-    const expanded = !setting("hotbarDefaultCollapsed");
+    let expanded;
+
+    if (options.isFirstRender) expanded = !setting("hotbarDefaultCollapsed");
+    else expanded = !html.querySelector("#action-bar").classList.contains("collapsed");
 
     function toggleHotbar(html, button, expanded) {
       button.classList.remove("fa-bars", "fa-caret-left", "fa-caret-right");
@@ -32,24 +35,24 @@ export default function render() {
 
     const button = html.querySelector("[data-action='menu']");
     button.dataset.action = "toggleHotbar";
-    toggleHotbar(html, button, expanded)
+    toggleHotbar(html, button, expanded);
 
     button.addEventListener("click", event => {
       const expanded = button.classList.contains("fa-caret-left");
-      toggleHotbar(html, button, !expanded)
-    })
+      toggleHotbar(html, button, !expanded);
+    });
   });
 
-  Hooks.once("renderPlayers", (players, html, _context, _options) => {
+  Hooks.on("renderPlayers", (players, html, _context, _options) => {
     if (!setting("hidePerformance")) return;
 
     const performanceStats = html.querySelector("#performance-stats");
     performanceStats.classList.add("hidden");
-  })
+  });
 
-  Hooks.once("renderGamePause", (pause, html, _context, _options) => {
+  Hooks.on("renderGamePause", (pause, html, _context, _options) => {
     if (!setting("lowerPauseBanner")) return;
 
     html.style.top = "calc(72vh - 100px)";
-  })
+  });
 }

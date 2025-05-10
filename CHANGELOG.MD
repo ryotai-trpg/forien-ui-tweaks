@@ -1,4 +1,7 @@
 
+### v0.3.1
+- Enforce rules against potential app re-rendering.
+
 ### v0.3.0
 - Added GM only setting that allows overriding Foundry's default `maxZoom` and `minZoom` values for Canvas.
 
