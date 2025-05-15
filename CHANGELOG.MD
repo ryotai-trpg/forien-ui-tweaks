@@ -1,4 +1,7 @@
 
+### v0.3.2
+- Added Japanese localization (thanks to [ryotai-trpg](https://github.com/ryotai-trpg))
+
 ### v0.3.1
 - Enforce rules against potential app re-rendering.
 
