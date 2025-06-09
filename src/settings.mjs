@@ -14,7 +14,8 @@ function tabChoices() {
     playlists: foundry.documents.Playlist.metadata.labelPlural,
     compendium: "SIDEBAR.TabCompendium",
     settings: "SIDEBAR.TabSettings",
-  }
+    last: "Forien.UITweaks.LastOpened",
+  };
 
   if (game.user.isGM) return tabs;
 
@@ -32,22 +33,22 @@ const KEYBINDINGS = {
       {
         modifiers: [SHIFT, CONTROL],
         key: "KeyX",
-      }
+      },
     ],
     onDown: () => {
       document.querySelector("#interface").classList.toggle("hidden");
-    }
-  }
-}
+    },
+  },
+};
 
-const SETTINGS = {
+export const SETTINGS = {
   autoExpandSidebar: {
     key: "autoExpandSidebar",
     label: "AutoExpandSidebar",
     scope: "client",
     config: true,
     default: false,
-    type: Boolean
+    type: Boolean,
   },
   defaultTab: {
     key: "defaultTab",
@@ -56,7 +57,7 @@ const SETTINGS = {
     config: true,
     default: "chat",
     type: String,
-    choices: tabChoices
+    choices: tabChoices,
   },
   collapsibleHotbar: {
     key: "collapsibleHotbar",
@@ -73,7 +74,7 @@ const SETTINGS = {
     scope: "client",
     config: true,
     default: false,
-    type: Boolean
+    type: Boolean,
   },
   hidePerformance: {
     key: "hidePerformance",
@@ -88,7 +89,7 @@ const SETTINGS = {
         performanceStats.classList.add("hidden");
       else
         performanceStats.classList.remove("hidden");
-    }
+    },
   },
   lowerPauseBanner: {
     key: "lowerPauseBanner",
@@ -103,7 +104,7 @@ const SETTINGS = {
         pauseBanner.style.top = "calc(72vh - 100px)";
       else
         delete pauseBanner.style.top;
-    }
+    },
   },
   maxZoom: {
     key: "maxZoom",
@@ -114,7 +115,7 @@ const SETTINGS = {
     type: Number,
     onChange: (value) => {
       if (value > 0) CONFIG.Canvas.maxZoom = value;
-    }
+    },
   },
   minZoom: {
     key: "minZoom",
@@ -125,7 +126,14 @@ const SETTINGS = {
     type: Number,
     onChange: (value) => {
       if (value > 0) CONFIG.Canvas.minZoom = value;
-    }
+    },
+  },
+  lastOpened: {
+    key: "lastOpened",
+    scope: "user",
+    config: false,
+    default: "",
+    type: String,
   },
 };
 
@@ -143,7 +151,7 @@ export function registerSettings() {
       hint: `${CON.I18N_PREFIX}.KEYBINDINGS.${keybind.label}.Hint`,
     }));
   }
-  game.keybindings.register(CON.ID, "test", {name: "hint will be duplicated", hint:"test"})
+  game.keybindings.register(CON.ID, "test", {name: "hint will be duplicated", hint: "test"});
 }
 
 export function setting(setting) {
@@ -151,4 +159,14 @@ export function setting(setting) {
     throw new Error(`Setting ${setting} is not defined in ${CON.ID}.`);
 
   return game.settings.get(CON.ID, setting);
+}
+
+export function setSetting(setting, value) {
+  if (!(setting in SETTINGS))
+    throw new Error(`Setting ${setting} is not defined in ${CON.ID}.`);
+
+  if (!value)
+    throw new Error("Value cannot be empty.");
+
+  return game.settings.set(CON.ID, setting, value);
 }

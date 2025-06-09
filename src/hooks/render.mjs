@@ -3,9 +3,13 @@ import {setting} from "../settings.mjs";
 export default function render() {
   Hooks.on("renderSidebar", (sidebar, _html, _context, _options) => {
     if (setting("autoExpandSidebar")) {
-      const tab = setting("defaultTab");
+      let tab = setting("defaultTab");
+      if (tab === "last")
+        tab = setting("lastOpened");
+
+      if (tab) sidebar.changeTab(tab, "primary");
+
       sidebar.expand();
-      sidebar.changeTab(tab, "primary");
     }
   });
 

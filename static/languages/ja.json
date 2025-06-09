@@ -1,5 +1,6 @@
 {
   "Forien.UITweaks": {
+    "LastOpened": "Last Opened Tab",
     "KEYBINDINGS": {
       "HideUI.Name": "インターフェース表示の切り替え",
       "HideUI.Hint": "このボタンの組み合わせを押すと、インターフェース全体の表示/非表示が切り替わります。開いているアプリケーション（シートなど）には影響しません。"

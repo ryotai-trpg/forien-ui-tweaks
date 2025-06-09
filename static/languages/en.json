@@ -1,5 +1,6 @@
 {
   "Forien.UITweaks": {
+    "LastOpened": "Last Opened Tab",
     "KEYBINDINGS": {
       "HideUI.Name": "Toggle Interface Visibility",
       "HideUI.Hint": "Pressing this button combination will toggle the visibility of the entire Interface. Will not affect any opened Applications (like Sheets)."

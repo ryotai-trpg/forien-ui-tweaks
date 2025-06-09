@@ -1,4 +1,7 @@
 
+### v0.4.0
+- Added a new option to the default tab setting that opens the last used selected tab ([#3](https://github.com/Foundry-Workshop/forien-ui-tweaks/issues/3)) 
+
 ### v0.3.2
 - Added Japanese localization (thanks to [ryotai-trpg](https://github.com/ryotai-trpg))
 
