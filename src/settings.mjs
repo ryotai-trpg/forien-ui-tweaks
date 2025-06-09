@@ -1,4 +1,4 @@
-import {CON} from "./const.mjs";
+import {CON} from "const";
 
 function tabChoices() {
   const tabs = {

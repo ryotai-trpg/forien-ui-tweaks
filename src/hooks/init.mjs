@@ -1,5 +1,5 @@
-import {registerConfig}   from "../config.mjs";
-import {registerSettings} from "../settings.mjs";
+import {registerConfig}   from "config";
+import {registerSettings} from "settings";
 
 export default function init() {
   Hooks.once("init", () => {

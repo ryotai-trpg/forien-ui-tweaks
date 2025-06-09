@@ -1,4 +1,4 @@
-import {setting} from "../settings.mjs";
+import {setting} from "settings";
 
 export default function render() {
   Hooks.on("renderSidebar", (sidebar, _html, _context, _options) => {
@@ -41,7 +41,7 @@ export default function render() {
     button.dataset.action = "toggleHotbar";
     toggleHotbar(html, button, expanded);
 
-    button.addEventListener("click", event => {
+    button.addEventListener("click", () => {
       const expanded = button.classList.contains("fa-caret-left");
       toggleHotbar(html, button, !expanded);
     });

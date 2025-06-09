@@ -1,4 +1,4 @@
-import {setting} from "./settings.mjs";
+import {setting} from "settings";
 
 export function registerConfig() {
   const maxZoom = setting("maxZoom");
