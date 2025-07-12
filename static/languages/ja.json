@@ -1,13 +1,13 @@
 {
   "Forien.UITweaks": {
-    "LastOpened": "Last Opened Tab",
+    "LastOpened": "最後に開いたタブ",
     "KEYBINDINGS": {
       "HideUI.Name": "インターフェース表示の切り替え",
       "HideUI.Hint": "このボタンの組み合わせを押すと、インターフェース全体の表示/非表示が切り替わります。開いているアプリケーション（シートなど）には影響しません。"
     },
     "SETTINGS": {
       "AutoExpandSidebar.Name": "サイドバーを自動で展開",
-      "AutoExpandSidebar.Hint": "チェックすると、ログイン時にサイドバーを展開した状態で開始します",
+      "AutoExpandSidebar.Hint": "チェックすると、ログイン時にサイドバーを展開した状態で開始します。",
       "DefaultTab.Name": "デフォルトのサイドバータブ",
       "DefaultTab.Hint": "サイドバーの自動拡張設定で開くサイドバータブを選択します。",
       "CollapsibleHotbar.Name": "折りたたみ可能なホットバー",
